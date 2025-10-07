@@ -11,6 +11,11 @@ class LoginPage:
         self.password_input = page.get_by_placeholder("Password")
         self.accessyouraccount_button = page.get_by_role("button", name="Access Your Account")
 
+    def goto(self):
+        self.page.goto("https://test.koseapp.com/signin")
+        self.page.wait_for_load_state("domcontentloaded")
+
+
     def click_signin(self):
         self.signin_button.click()
 
@@ -22,6 +27,17 @@ class LoginPage:
 
     def click_accessaccount(self):  #Method
         self.accessyouraccount_button.click()
+
+    def login(self, email: str, password: str):
+            """
+            Complete login flow: click Sign In, enter credentials, click Access Your Account.
+            """
+            self.click_signin()
+            self.enter_email(email)
+            self.enter_password(password)
+            self.click_accessaccount()
+            # Wait for navigation or page load after login
+            self.page.wait_for_load_state("networkidle")
 
 
 

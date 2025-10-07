@@ -3,7 +3,7 @@ from idlelib.search import SearchDialog
 
 from playwright.sync_api import Page, expect
 
-from pages.koseapp_buy_page import BuyPage
+#from pages.koseapp_buy_page import BuyPage
 from pages.koseapp_login_page import LoginPage
 from pages.koseapp_home_page import HomePage
 
@@ -11,7 +11,7 @@ from pages.koseapp_home_page import HomePage
 def test_example(page: Page) -> None:
     login_page = LoginPage(page)
     home_page = HomePage(page)
-    buy_page = BuyPage(page)
+ #   buy_page = BuyPage(page)
 
 #Navbar Click
     page.goto("https://test.koseapp.com/")
@@ -24,12 +24,15 @@ def test_example(page: Page) -> None:
 
     home_page.click_buy_button()
     #buy_page.click_location()
-   # buy_page.enter_location("Dallas")
-  #  buy_page.select_location_option()
+    #buy_page.enter_location("Dallas")
+    #buy_page.select_location_option()
+
 
 #Rent Page Location Search
     home_page.click_rent_button()
     #expect(home_page.is_homeloans_button_visible()).to.be.true()
+
+#Home Loans Page
     expect(home_page.homeloans_button).to_be_visible()
 
 
